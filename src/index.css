@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+
+/* index.css or globals.css */
+:root {
+  --gold: #D4AF37;
+  --gold-light: #F4D06F;
+  --gold-dark: #A8781D;
+}
