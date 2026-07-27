@@ -52,20 +52,35 @@ export default function OnboardingFlow() {
 
       {/* Branding — floats above the background */}
       <div className="absolute inset-0 z-20 p-10 pointer-events-none">
-        <h1 className="text-2xl font-serif tracking-[0.2em] text-[#D4AF37] mt-1">
+        <h1 className="text-2xl mt-5 ml-105 font-serif tracking-[0.2em] text-[#D4AF37] mt-1">
           RAY AMOR
         </h1>
-        <p className="text-xs tracking-[0.3em] text-neutral-300 mt-1">
+        <p className="text-xs  ml-95 tracking-[0.3em] text-neutral-300 mt-1">
           AI MIND ORGANIZING ROUTINE
         </p>
+         <div className="mt-90 ml-110 mb-4 ml-10 bg-black/60 border border-amber-500/40 rounded-2xl p-6 w-60 backdrop-blur-sm">
+          <p className="text-amber-300 text-lg font-medium">
+            Hi, I&apos;m Lumi <span className="align-middle">✨</span>
+          </p>
+          <p className="text-amber-400 text-sm font-semibold mt-1">
+            Your AI Concierge
+          </p>
+          <p className="text-gray-200 text-sm mt-2 leading-relaxed">
+            Welcome to Ray Amor.
+            <br />
+            Let&apos;s make today legendary.
+          </p>
+        </div> 
       </div>
 
       {/* Step process card — highest z-index, floats above the background image */}
-      <div className="relative z-30 min-h-screen flex items-center justify-center lg:justify-end p-6 lg:pr-16">
-        <div className="w-full max-w-3xl bg-neutral-950/95 backdrop-blur-sm border border-neutral-800 rounded-2xl p-8 md:p-12">
+      <div className="relative z-30 min-h-screen flex items-center justify-center
+       lg:justify-end p-6 lg:pr-2">
+        <div className="w-full max-w-3xl bg-neutral-950/95 backdrop-blur-sm border border-neutral-800
+         rounded-2xl p-6 md:p-8">
           <StepIndicator currentStep={step} />
 
-          <div className="mt-10 min-h-[380px]">
+          <div className="mt-6 min-h-[260px]">
             {step === 1 && (
               <AccountTypeStep selected={accountType} onSelect={setAccountType} />
             )}
@@ -80,13 +95,14 @@ export default function OnboardingFlow() {
             )}
           </div>
 
-          <div className="flex items-center justify-between mt-10 pt-6 border-t border-neutral-800">
+          <div className="flex items-center justify-between mt-6 pt-4 
+          border-t border-neutral-800">
             <div>
               {step > 1 && (
                 <button
                   type="button"
                   onClick={goBack}
-                  className="px-5 py-2.5 text-sm text-neutral-300 hover:text-white"
+                  className="px-5 py-2 text-sm text-neutral-300 hover:text-white"
                 >
                   Back
                 </button>
@@ -95,7 +111,7 @@ export default function OnboardingFlow() {
                 <button
                   type="button"
                   onClick={skipAvatar}
-                  className="ml-2 px-5 py-2.5 text-sm text-neutral-300 border border-neutral-700 rounded-lg hover:border-[#D4AF37] hover:text-[#D4AF37]"
+                  className="ml-2 px-5 py-2 text-sm text-neutral-300 border border-neutral-700 rounded-lg hover:border-[#D4AF37] hover:text-[#D4AF37]"
                 >
                   Skip for now
                 </button>
@@ -107,7 +123,7 @@ export default function OnboardingFlow() {
               onClick={goNext}
               disabled={isNextDisabled}
               className={[
-                "flex items-center gap-2 px-7 py-2.5 rounded-lg font-medium text-black transition-opacity",
+                "flex items-center gap-2 px-7 py-2 rounded-lg font-medium text-black transition-opacity",
                 "bg-[#D4AF37]",
                 isNextDisabled ? "opacity-40 cursor-not-allowed" : "hover:opacity-90",
               ].join(" ")}

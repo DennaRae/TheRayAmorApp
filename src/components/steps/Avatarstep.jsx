@@ -1,46 +1,37 @@
 import React from "react";
 
-/**
- * Replace these placeholder arrays with your real thumbnail + layer assets.
- * Each option has:
- *  - thumb: small square image shown in the picker grid
- *  - layer: full-size image used to compose the big preview circle (optional,
- *           only needed for `face` since face already contains the base look
- *           in your current mock; if you later split hair/outfit into their
- *           own transparent PNG layers, give hairstyle/outfit/accessories a
- *           `layer` too and the preview will stack them automatically).
- */
+
 const FACE_OPTIONS = [
-  { id: "face-1", thumb: "/assets/avatar/face-1.png", layer: "/assets/avatar/face-1.png" },
-  { id: "face-2", thumb: "/assets/avatar/face-2.png", layer: "/assets/avatar/face-2.png" },
-  { id: "face-3", thumb: "/assets/avatar/face-3.png", layer: "/assets/avatar/face-3.png" },
-  { id: "face-4", thumb: "/assets/avatar/face-4.png", layer: "/assets/avatar/face-4.png" },
-  { id: "face-5", thumb: "/assets/avatar/face-5.png", layer: "/assets/avatar/face-5.png" },
-  { id: "face-6", thumb: "/assets/avatar/face-6.png", layer: "/assets/avatar/face-6.png" },
+  { id: "face-1", thumb: "/assets/avatar/face1.png", layer: "/assets/avatar/face1.png" },
+  { id: "face-2", thumb: "/assets/avatar/face2.png", layer: "/assets/avatar/face2.png" },
+  { id: "face-3", thumb: "/assets/avatar/face3.png", layer: "/assets/avatar/face3.png" },
+  { id: "face-4", thumb: "/assets/avatar/face4.png", layer: "/assets/avatar/face4.png" },
+  { id: "face-5", thumb: "/assets/avatar/face5.png", layer: "/assets/avatar/face5.png" },
+  { id: "face-6", thumb: "/assets/avatar/face6.png", layer: "/assets/avatar/face6.png" },
 ];
 
 const HAIR_OPTIONS = [
-  { id: "hair-1", thumb: "/assets/avatar/hair-1.png" },
-  { id: "hair-2", thumb: "/assets/avatar/hair-2.png" },
-  { id: "hair-3", thumb: "/assets/avatar/hair-3.png" },
-  { id: "hair-4", thumb: "/assets/avatar/hair-4.png" },
-  { id: "hair-5", thumb: "/assets/avatar/hair-5.png" },
-  { id: "hair-6", thumb: "/assets/avatar/hair-6.png" },
+  { id: "hair-1", thumb: "/assets/avatar/face1.png" },
+  { id: "hair-2", thumb: "/assets/avatar/face2.png" },
+  { id: "hair-3", thumb: "/assets/avatar/face3.png" },
+  { id: "hair-4", thumb: "/assets/avatar/face4.png" },
+  { id: "hair-5", thumb: "/assets/avatar/face5.png" },
+  { id: "hair-6", thumb: "/assets/avatar/face6.png" },
 ];
 
 const OUTFIT_OPTIONS = [
-  { id: "outfit-1", thumb: "/assets/avatar/outfit-1.png" },
-  { id: "outfit-2", thumb: "/assets/avatar/outfit-2.png" },
-  { id: "outfit-3", thumb: "/assets/avatar/outfit-3.png" },
-  { id: "outfit-4", thumb: "/assets/avatar/outfit-4.png" },
-  { id: "outfit-5", thumb: "/assets/avatar/outfit-5.png" },
+  { id: "outfit-1", thumb: "/assets/avatar/face1.png" },
+  { id: "outfit-2", thumb: "/assets/avatar/face2.png" },
+  { id: "outfit-3", thumb: "/assets/avatar/face3.png" },
+  { id: "outfit-4", thumb: "/assets/avatar/face4.png" },
+  { id: "outfit-5", thumb: "/assets/avatar/face5.png" },
 ];
 
 const ACCESSORY_OPTIONS = [
-  { id: "earrings", thumb: "/assets/avatar/earrings.png" },
+  { id: "earrings", thumb: "/assets/avatar/earings.png" },
   { id: "pendant", thumb: "/assets/avatar/pendant.png" },
-  { id: "layered-necklace", thumb: "/assets/avatar/layered-necklace.png" },
-  { id: "glasses", thumb: "/assets/avatar/glasses.png" },
+  { id: "layered-necklace", thumb: "/assets/avatar/necklace.png" },
+  { id: "glasses", thumb: "/assets/avatar/glass.png" },
   { id: "choker", thumb: "/assets/avatar/choker.png" },
 ];
 
@@ -94,11 +85,10 @@ export default function AvatarStep({ avatar, onChange }) {
         {/* Preview */}
         <div className="flex flex-col items-center md:w-64 shrink-0">
           <div className="w-56 h-56 rounded-full overflow-hidden border-2 border-[#D4AF37] relative bg-neutral-900">
-            {/* Stack layers here as you add real transparent PNGs:
-                face -> hairstyle -> outfit -> accessory */}
+          
             <img
-              src={previewFace.layer}
-              alt="avatar preview"
+              src="/girlimage.png"
+              alt="avatar preview1"
               className="w-full h-full object-cover"
             />
           </div>

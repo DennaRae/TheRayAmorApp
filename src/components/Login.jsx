@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 // Put background_image.png in your project's /src/assets (or /public) folder
 // and update the import/path below to match your project structure.
@@ -13,7 +14,7 @@ const [isSignup, setIsSignup] = useState(false);
 
 const [name, setName] = useState("");
 const [confirmPassword, setConfirmPassword] = useState("");
-
+  const navigate = useNavigate();
 const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -28,10 +29,10 @@ const handleSubmit = (e) => {
     password === user.password
   ) {
 
-    alert("Login Successful!");
+    // alert("Login Successful!");
 
     // Navigate wherever you want
-    // navigate("/dashboard");
+    navigate("/onboarding");
 
   } else {
     alert("Invalid Email or Password");
@@ -70,7 +71,7 @@ const handleSubmit = (e) => {
   return (
    <div
   className=" w-full flex items-center justify-end bg-cover bg-center relative px-6 md:px-16 py-12 min-h-screen"
-  style={{ backgroundImage: "url('/backgroundimage.png')" }}
+  style={{ backgroundImage: "url('/background.png')" }}
 >
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/40" />
