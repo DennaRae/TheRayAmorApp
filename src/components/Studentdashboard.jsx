@@ -256,7 +256,7 @@ export default function StudentDashboard() {
             >
               <div className="relative z-10 max-w-md">
                 <h2 className="text-3xl font-serif font-bold flex items-center gap-2">
-                  Hello, {user?.name} <span>👋</span>
+                  Hello, {user?.name} 
                 </h2>
                 <p className="text-gray-300 mt-3 leading-relaxed">
                   Let&apos;s learn, grow, and become extraordinary.
