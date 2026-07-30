@@ -324,16 +324,14 @@ function HeroSlider() {
 }
 
 export default function RayAmorDashboard() {
+  const user = JSON.parse(localStorage.getItem("rayamor-user"));
   return (
+
     <div className="min-h-screen w-full bg-[#08080a] text-white flex">
       {/* ---------------- SIDEBAR ---------------- */}
       <aside className="hidden lg:flex flex-col w-64 shrink-0 border-r border-white/10 bg-[#0a0a0c] px-4 py-6">
         <div className="mb-8 px-2">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold tracking-wide text-amber-400">
-              RA
-            </span>
-          </div>
+          
           <p className="text-sm font-semibold tracking-[0.15em] text-amber-400 mt-1">
             RAY AMOR
           </p>
@@ -397,7 +395,7 @@ export default function RayAmorDashboard() {
             <div>
             
                <h1 className="text-2xl md:text-3xl font-bold">
-            Welcome back, <span className="text-amber-400">Ray</span>
+            Welcome back, <span className="text-amber-400">{user?.name}</span>
           </h1>
             </div>
           </div>
@@ -410,8 +408,8 @@ export default function RayAmorDashboard() {
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-red-500" />
             </button>
             <div className="w-9 h-9 rounded-full border border-amber-400/60 text-amber-400 flex items-center justify-center text-sm font-semibold">
-              R
-            </div>
+ <img src="avtar.png" classname='h-5 w-5 ' />         
+    </div>
           </div>
         </div>
 
