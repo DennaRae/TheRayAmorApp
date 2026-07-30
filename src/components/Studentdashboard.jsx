@@ -364,8 +364,8 @@ export default function StudentDashboard() {
                 Latest Achievement
               </h3>
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-[#D4AF37] flex items-center justify-center shrink-0">
-                  <Shield className="w-7 h-7 text-black/50" />
+                <div className="w-14 h-14 rounded-xl bg-[#ddba3d] flex items-center justify-center shrink-0">
+                  <Shield className="w-7 h-7 text-black" />
                 </div>
                 <div>
                   <p className="font-semibold text-sm">Quick Learner</p>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Home,
   GraduationCap,
@@ -99,8 +100,6 @@ const navItemsSecondary = [
   { label: "Help & Support", icon: HelpCircle },
 ];
 
-
-const user = JSON.parse(localStorage.getItem("rayamor-user"));
 // ---- Section data (image 1 layout: full row of buttons per section) ----
 const sections = [
   {
@@ -145,48 +144,6 @@ const sections = [
       { label: "Add Listing", icon: Store },
     ],
   },
-//   {
-//     key: "travel",
-//     title: "Travel",
-//     subtitle: "Explore the world with ease.",
-//     accent: "text-sky-400",
-//     accentBg: "bg-sky-400/10",
-//     accentBorder: "hover:border-sky-400/50",
-//     icon: Plane,
-//     items: [
-//       { label: "Flights", icon: Plane },
-//       { label: "Hotels", icon: Bed },
-//       { label: "Activities", icon: Compass },
-//       { label: "Car Rentals", icon: Car },
-//       { label: "Travel Guide", icon: Globe },
-//       { label: "Visa", icon: FileText },
-//       { label: "Insurance", icon: ShieldCheck },
-//       { label: "Currency", icon: CircleDollarSign },
-//       { label: "Packages", icon: Briefcase },
-//       { label: "My Trips", icon: Luggage },
-//     ],
-//   },
-//   {
-//     key: "finance",
-//     title: "Finance",
-//     subtitle: "Manage your money, grow your wealth.",
-//     accent: "text-violet-400",
-//     accentBg: "bg-violet-400/10",
-//     accentBorder: "hover:border-violet-400/50",
-//     icon: Landmark,
-//     items: [
-//       { label: "Bank Transfer", icon: Landmark },
-//       { label: "Investments", icon: TrendingUp },
-//       { label: "Bills", icon: FileText },
-//       { label: "Loans", icon: Handshake },
-//       { label: "Insurance", icon: ShieldCheck },
-//       { label: "Credit Score", icon: Gauge },
-//       { label: "Tax Filing", icon: Receipt },
-//       { label: "Budget", icon: PieChart },
-//       { label: "Savings", icon: PiggyBank },
-//       { label: "Reports", icon: FileBarChart },
-//     ],
-//   },
   {
     key: "more",
     title: "More Services",
@@ -212,10 +169,27 @@ const sections = [
 ];
 
 function IconButton({ label, Icon, accent }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    switch (label) {
+      case "Teacher Dashboard":
+        navigate("/teacher");
+        break;
+
+      case "Student Dashboard":
+        navigate("/student");
+        break;
+
+      default:
+        console.log(`${label} clicked`);
+    }
+  };
+
   return (
     <button
       className="group flex flex-col items-center gap-2 rounded-xl px-3 py-3 w-[92px] shrink-0 border border-transparent hover:bg-white/[0.04] hover:border-white/10 transition-all"
-      onClick={() => console.log(`${label} clicked`)}
+      onClick={handleClick}
     >
       <span
         className={`flex items-center justify-center w-11 h-11 rounded-xl bg-white/[0.04] ${accent} group-hover:scale-105 transition-transform`}
@@ -241,7 +215,7 @@ function SectionRow({ section }) {
             <Icon size={18} strokeWidth={1.75} />
           </span>
           <div>
-            <h3 className={`font-semibold text-[15px] ${section.accent}`}>
+            <h3 className={`font-serif font-semibold text-[15px] ${section.accent}`}>
               {section.title}
             </h3>
             <p className="text-xs text-gray-500">{section.subtitle}</p>
@@ -298,7 +272,7 @@ function HeroSlider() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-black/10" />
 
       <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-10">
-        <h2 className="text-3xl md:text-4xl font-semibold text-white leading-tight max-w-md">
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold text-white leading-tight max-w-md">
           {slide.eyebrow}{" "}
           <span className="text-amber-400">{slide.highlight}</span>
         </h2>
@@ -326,13 +300,11 @@ function HeroSlider() {
 export default function RayAmorDashboard() {
   const user = JSON.parse(localStorage.getItem("rayamor-user"));
   return (
-
     <div className="min-h-screen w-full bg-[#08080a] text-white flex">
       {/* ---------------- SIDEBAR ---------------- */}
       <aside className="hidden lg:flex flex-col w-64 shrink-0 border-r border-white/10 bg-[#0a0a0c] px-4 py-6">
         <div className="mb-8 px-2">
-          
-          <p className="text-sm font-semibold tracking-[0.15em] text-amber-400 mt-1">
+          <p className="text-sm font-serif tracking-[0.15em] text-amber-400 mt-1">
             RAY AMOR
           </p>
           <p className="text-[10px] tracking-[0.15em] text-gray-500 mt-0.5">
@@ -380,7 +352,7 @@ export default function RayAmorDashboard() {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             Active Member
           </div>
-          <p className="text-[11px] text-gray-500 mt-0.5">Valid till Aug 18, 2025</p>
+          <p className="text-[11px] text-gray-500 mt-0.5">Valid till Aug 28, 2026</p>
           <button className="w-full mt-3 flex items-center justify-center gap-1 text-xs font-medium text-black bg-amber-400 rounded-lg py-2 hover:bg-amber-300 transition-colors">
             Manage Membership <ChevronRight size={14} />
           </button>
@@ -391,12 +363,11 @@ export default function RayAmorDashboard() {
       <main className="flex-1 min-w-0 px-5 md:px-8 py-6 space-y-5 overflow-y-auto">
         {/* Top bar */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">  
+          <div className="flex items-center gap-3">
             <div>
-            
-               <h1 className="text-2xl md:text-3xl font-bold">
-            Welcome back, <span className="text-amber-400">{user?.name}</span>
-          </h1>
+              <h1 className="text-2xl md:text-3xl font-serif font-bold">
+                Welcome back, <span className="text-amber-400">{user?.name}</span>
+              </h1>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -408,14 +379,13 @@ export default function RayAmorDashboard() {
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-red-500" />
             </button>
             <div className="w-9 h-9 rounded-full border border-amber-400/60 text-amber-400 flex items-center justify-center text-sm font-semibold">
- <img src="avtar.png" classname='h-5 w-5 ' />         
-    </div>
+              <img src="avtar.png" classname='h-5 w-5 ' />
+            </div>
           </div>
         </div>
 
         {/* Welcome line (image 1 style) */}
         <div>
-          
           <p className="text-sm text-gray-500 mt-1">
             Explore your dashboard and continue your journey.
           </p>
