@@ -96,7 +96,6 @@ const navItemsSecondary = [
   { label: "Wallet", icon: Wallet },
   { label: "Transactions", icon: Receipt },
   { label: "Profile", icon: User },
-  { label: "Settings", icon: Settings },
   { label: "Help & Support", icon: HelpCircle },
 ];
 
@@ -344,7 +343,7 @@ export default function RayAmorDashboard() {
           </ul>
         </nav>
 
-        <div className="mt-4 rounded-xl border border-amber-400/30 bg-amber-400/5 p-4">
+        {/* <div className="mt-4 rounded-xl border border-amber-400/30 bg-amber-400/5 p-4">
           <div className="flex items-center gap-2 text-amber-400 text-xs font-semibold">
             <Crown size={14} /> PREMIUM MEMBER
           </div>
@@ -356,7 +355,7 @@ export default function RayAmorDashboard() {
           <button className="w-full mt-3 flex items-center justify-center gap-1 text-xs font-medium text-black bg-amber-400 rounded-lg py-2 hover:bg-amber-300 transition-colors">
             Manage Membership <ChevronRight size={14} />
           </button>
-        </div>
+        </div> */}
       </aside>
 
       {/* ---------------- MAIN ---------------- */}
@@ -370,7 +369,7 @@ export default function RayAmorDashboard() {
               </h1>
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-7">
             <button className="text-gray-300 hover:text-white transition-colors">
               <Search size={20} />
             </button>
@@ -381,6 +380,9 @@ export default function RayAmorDashboard() {
             <div className="w-9 h-9 rounded-full border border-amber-400/60 text-amber-400 flex items-center justify-center text-sm font-semibold">
               <img src="avtar.png" classname='h-5 w-5 ' />
             </div>
+            <h2 classname="mt-5">
+            <Settings size={20} className="text-gray-300 cursor-pointer hover:text-white transition-colors" />
+             </h2>
           </div>
         </div>
 

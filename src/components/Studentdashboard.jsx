@@ -155,15 +155,7 @@ export default function StudentDashboard() {
       {/* Sidebar */}
       <aside className="w-64 shrink-0 border-r border-[#D4AF37]/10 flex flex-col justify-between py-6 px-4 hidden lg:flex">
         <div>
-          <div className="px-2 mb-8 text-center">
-            
-            <h2 className="text-sm font-serif tracking-[0.25em]" style={{ color: GOLD }}>
-              RAY AMOR
-            </h2>
-            <p className="text-[10px] tracking-[0.2em] text-[#D4AF37]/60 mt-1">
-              AI MIND ORGANIZING ROUTINE
-            </p>
-          </div>
+          
 
           <div className="flex items-center gap-2 px-3 py-2 mb-4 text-sm font-medium" style={{ color: GOLD }}>
             <GraduationCap className="w-4 h-4" />

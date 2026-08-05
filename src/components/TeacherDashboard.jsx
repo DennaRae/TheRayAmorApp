@@ -236,15 +236,7 @@ export default function TeacherDashboard() {
       {/* Sidebar */}
       <aside className="w-64 shrink-0 border-r border-[#D4AF37]/20 flex flex-col justify-between py-6 px-4 hidden lg:flex">
         <div>
-          <div className="px-2 mb-8">
-            
-            <h2 className="text-sm font-serif tracking-[0.25em] text-[#D4AF37]">
-              RAY AMOR
-            </h2>
-            <p className="text-[10px] tracking-[0.2em] text-[#D4AF37] mt-1">
-              AI MIND ORGANIZING ROUTINE
-            </p>
-          </div>
+
 
           <div className="flex items-center gap-2 px-3 py-2 mb-4 text-[#D4AF37] text-sm font-medium">
             <GraduationCap className="w-4 h-4" />
@@ -269,10 +261,7 @@ export default function TeacherDashboard() {
         </div>
 
         <div className="space-y-1">
-          <button className="w-full flex items-center gap-3 px-2 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-white/5 transition">
-            <Settings className="w-4 h-4" />
-            Settings
-          </button>
+         
           <button className="w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg border border-[#D4AF37]/20 text-sm text-[#D4AF37]">
             <span className="flex items-center gap-2">
               <Crown className="w-4 h-4" />
@@ -303,6 +292,10 @@ export default function TeacherDashboard() {
             </div>
             <ChevronDown className="w-4 h-4 text-gray-400" />
           </div>
+           <button className=" rounded-lg text-sm text-gray-300 hover:bg-white/5 transition">
+            <Settings className="w-5 h-5" />
+
+          </button>
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
