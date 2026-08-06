@@ -23,7 +23,6 @@ import {
   Crown,
   Building2,
   Sparkles,
-  
   Megaphone,
   Share2,
   PartyPopper,
@@ -78,30 +77,6 @@ const stats = [
   },
 ];
 
-const upcomingClasses = [
-  {
-    icon: BookOpen,
-    iconBg: "bg-purple-500/20 text-purple-300",
-    title: "Grade 5A - Mathematics",
-    subject: "Fractions and Decimals",
-    time: "09:00 AM",
-  },
-  {
-    icon: FlaskConical,
-    iconBg: "bg-emerald-500/20 text-emerald-300",
-    title: "Grade 6B - Science",
-    subject: "Life Cycles in Nature",
-    time: "11:00 AM",
-  },
-  {
-    icon: Landmark,
-    iconBg: "bg-amber-500/20 text-[#D4AF37]",
-    title: "Grade 7C - Social Studies",
-    subject: "The Ancient Civilizations",
-    time: "01:30 PM",
-  },
-];
-
 const todaySchedule = [
   {
     time: "08:00 AM",
@@ -133,54 +108,29 @@ const todaySchedule = [
     meta: "Period 4 · Room 210",
     dot: "bg-amber-400",
   },
-    {
-    time: "01:00 PM",
-    title: "Civics & Government",
-    meta: "Period 4 · Room 210",
-    dot: "bg-amber-400",
-  },
-    {
-    time: "01:00 PM",
-    title: "Civics & Government",
-    meta: "Period 4 · Room 210",
-    dot: "bg-amber-400",
-  },
-    {
-    time: "01:00 PM",
-    title: "Civics & Government",
-    meta: "Period 4 · Room 210",
-    dot: "bg-amber-400",
-  },
-   
 ];
 
 const communityPosts = [
   {
     name: "Ms. Johnson",
     time: "2h ago",
-    text:
-      'Our students crushed the "Passport Pals" challenge! So proud of their teamwork and creativity! 🎉',
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&auto=format&fit=crop&q=80",
+    text: 'Our students crushed the "Passport Pals" challenge! So proud of their teamwork and creativity! 🎉',
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300&h=200&fit=crop",
   },
   {
     name: "Mr. Davis",
     time: "5h ago",
-    text:
-      "Great discussion today in Civics about leadership and responsibility. The future is bright! ⭐",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&auto=format&fit=crop&q=80",
+    text: "Great discussion today in Civics about leadership and responsibility. The future is bright! ⭐",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=300&h=200&fit=crop",
   },
   {
     name: "Ms. Martinez",
     time: "1d ago",
-    text:
-      "Loving how my class is using the new ELA resources! Engagement is off the charts! 📚",
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
-    image:
-      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80",
+    text: "Loving how my class is using the new ELA resources! Engagement is off the charts! 📚",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=300&h=200&fit=crop",
   },
 ];
 
@@ -188,6 +138,7 @@ const lumiSuggestions = [
   { icon: Wand2, label: "Generate a lesson idea" },
   { icon: BookOpen, label: "Find classroom resources" },
   { icon: Star, label: "Analyze class progress" },
+  { icon: Sparkles, label: "Show class students present" },
 ];
 
 const announcements = [
@@ -203,12 +154,7 @@ const announcements = [
     desc: "Join our webinar: Student Engagement Strategies.",
     time: "1d ago",
   },
-  {
-    icon: Settings,
-    title: "System Update",
-    desc: "New assessment tools are now live!",
-    time: "2d ago",
-  },
+  
 ];
 
 const upcomingEvents = [
@@ -232,11 +178,6 @@ const quickActions = [
   { icon: CalendarCheck, label: "Take Attendance" },
   { icon: MessageSquare, label: "Send Message" },
 ];
-
-
-
-// ---------- Reusable pieces ----------
-const user = JSON.parse(localStorage.getItem("rayamor-user"));
 
 const classOverview = [
   {
@@ -268,9 +209,27 @@ const classOverview = [
     progress: 88,
   },
 ];
+
+// Small helper: initials avatar, since real photos aren't wired up yet
+function InitialsAvatar({ name }) {
+  const initials = name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+  return (
+    <div className="w-10 h-10 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center text-sm font-semibold shrink-0">
+      {initials}
+    </div>
+  );
+}
+
 // ---------- Main dashboard ----------
 
 export default function TeacherDashboard() {
+  const user = JSON.parse(localStorage.getItem("rayamor-user") || "null");
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white flex">
       {/* Sidebar */}
@@ -339,20 +298,21 @@ export default function TeacherDashboard() {
             </span>
           </button>
           <div className="flex items-center gap-3 pl-3 border-l border-white/10">
-            <div className="w-9 h-9 rounded-full bg-amber-500/20 flex items-center justify-center text-[#D4AF37] font-semibold">
-              <img src="avtar.png" classname="h-5 w-5 " />
+            <div className="w-9 h-9 rounded-full  flex items-center justify-center font-semibold">
+                <img src="/avtar.png" alt="Avatar" className="h-9 w-9" />
             </div>
             <div className="text-sm">
-              <p className="font-medium leading-tight">{user?.name} </p>
+              <p className="font-medium leading-tight">{user?.name}</p>
               <p className="text-gray-400 text-xs leading-tight">Teacher</p>
             </div>
             <ChevronDown className="w-4 h-4 text-gray-400" />
           </div>
-          <button className=" rounded-lg text-sm text-gray-300 hover:bg-white/5 transition">
+          <button className="rounded-lg text-sm text-gray-300 hover:bg-white/5 transition">
             <Settings className="w-5 h-5" />
           </button>
         </div>
 
+        {/* Two-column grid: left = content, right = sidebar widgets */}
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           {/* Left column */}
           <div className="xl:col-span-2 space-y-6">
@@ -362,16 +322,13 @@ export default function TeacherDashboard() {
                 backgroundImage: "url('teacherback.png')",
               }}
             >
-              {/* Dark Overlay */}
               <div className="absolute inset-0 bg-black/40"></div>
 
               <div className="relative z-10 max-w-lg">
                 <p className="text-gray-200 text-lg">Welcome back,</p>
-
                 <h2 className="text-4xl font-serif font-bold text-[#D4AF37] mt-1">
                   {user?.name}
                 </h2>
-
                 <p className="text-gray-300 mt-3">
                   Empowering classrooms, inspiring minds.
                 </p>
@@ -385,19 +342,13 @@ export default function TeacherDashboard() {
                   key={s.label}
                   className="bg-white/[0.03] border border-[#D4AF37]/20 rounded-xl p-4"
                 >
-                  {/* Icon + Value */}
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center">
                       <s.icon className="w-4 h-4 text-[#D4AF37]" />
                     </div>
-
                     <p className="text-[#D4AF37] text-2xl font-bold">{s.value}</p>
                   </div>
-
-                  {/* Label */}
                   <p className="text-md text-gray-400">{s.label}</p>
-
-                  {/* Subtitle */}
                   <p className={`text-xs mt-1 font-medium ${s.subColor}`}>{s.sub}</p>
                 </div>
               ))}
@@ -439,167 +390,41 @@ export default function TeacherDashboard() {
               </div>
 
               {/* Class Overview */}
-            {/* Class Overview */}
-<div className="bg-white/[0.03] border border-[#D4AF37]/20 rounded-xl p-5 flex flex-col">
-  <div className="flex items-center justify-between mb-4">
-    <h3 className="text-lg font-semibold text-[#D4AF37]">
-      Class Overview
-    </h3>
+              <div className="bg-white/[0.03] border border-[#D4AF37]/20 rounded-xl p-5 flex flex-col">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-[#D4AF37]">Class Overview</h3>
+                  <button className="text-[#D4AF37] text-xs font-medium flex items-center gap-1">
+                    View All Classes <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
 
-    <button className="text-[#D4AF37] text-xs font-medium flex items-center gap-1">
-      View All Classes
-      <ArrowRight className="w-3 h-3" />
-    </button>
-  </div>
+                <div className="space-y-3 flex-1">
+                  {classOverview.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center justify-between rounded-lg border border-white/5 bg-white/[0.02] px-3 py-3 hover:bg-white/[0.04] transition"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${item.iconBg}`}>
+                          <item.icon className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-white">{item.title}</p>
+                          <p className="text-xs text-gray-400">{item.meta}</p>
+                        </div>
+                      </div>
 
-  <div className="space-y-3 flex-1">
-    {classOverview.map((item, index) => (
-      <div
-        key={index}
-        className="flex items-center justify-between rounded-lg border border-white/5 bg-white/[0.02] px-3 py-3 hover:bg-white/[0.04] transition"
-      >
-        <div className="flex items-center gap-3">
-          <div
-            className={`w-10 h-10 rounded-lg flex items-center justify-center ${item.iconBg}`}
-          >
-            <item.icon className="w-5 h-5" />
-          </div>
-
-          <div>
-            <p className="text-sm font-medium text-white">
-              {item.title}
-            </p>
-
-            <p className="text-xs text-gray-400">
-              {item.meta}
-            </p>
-          </div>
-        </div>
-
-        <div className="text-right">
-          <div className="w-10 h-10 rounded-full border-[4px] border-[#D4AF37] flex items-center justify-center text-xs font-bold text-[#D4AF37]">
-            {item.progress}
-          </div>
-
-          <p className="text-[11px] text-gray-400 mt-1">
-            Avg. Progress
-          </p>
-        </div>
-      </div>
-    ))}
-  </div>
-
-  
-</div>
+                      <div className="text-right">
+                        <div className="w-10 h-10 rounded-full border-[4px] border-[#D4AF37] flex items-center justify-center text-xs font-bold text-[#D4AF37]">
+                          {item.progress}
+                        </div>
+                        <p className="text-[11px] text-gray-400 mt-1">Avg. Progress</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-
-            {/* Community Wall */}
-         {/* ================= Community Wall ================= */}
-<div className="bg-white/[0.03] border border-[#D4AF37]/20 rounded-xl p-5 mt-6">
-  {/* Header */}
-  <div className="flex items-center justify-between flex-wrap gap-4 mb-5">
-    <div className="flex items-center gap-2">
-      <Users className="w-5 h-5 text-[#D4AF37]" />
-      <h3 className="text-lg font-semibold text-[#D4AF37]">
-        Community Wall
-      </h3>
-    </div>
-
-    <div className="flex items-center gap-3">
-      <button className="px-4 py-1.5 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37] text-sm">
-        All Posts
-      </button>
-
-      <button className="px-4 py-1.5 rounded-lg border border-white/10 text-gray-300 text-sm hover:border-[#D4AF37]/30">
-        School
-      </button>
-
-      <button className="px-4 py-1.5 rounded-lg border border-white/10 text-gray-300 text-sm hover:border-[#D4AF37]/30">
-        Teachers
-      </button>
-
-      <div className="h-6 w-px bg-white/10" />
-
-      <button className="flex items-center gap-1 text-sm text-[#D4AF37]">
-        Sort: Recent
-        <ChevronDown className="w-4 h-4" />
-      </button>
-    </div>
-  </div>
-
-  {/* Posts */}
-  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-    {communityPosts.map((post, i) => (
-      <div
-        key={i}
-        className="rounded-xl border border-[#D4AF37]/20 bg-white/[0.02] p-4 hover:border-[#D4AF37]/40 transition"
-      >
-        {/* Top */}
-        <div className="flex justify-between">
-          <div className="flex gap-3">
-            <img
-              src={post.avatar}
-              alt={post.name}
-              className="w-10 h-10 rounded-full object-cover"
-            />
-
-            <div>
-              <p className="text-white font-medium text-sm">{post.name}</p>
-              <p className="text-xs text-gray-500">{post.time}</p>
-            </div>
-          </div>
-
-          <button className="text-[#D4AF37]">
-            <MoreVertical className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Content */}
-        <div className="flex gap-3 mt-4">
-          <div className="flex-1">
-            <p className="text-sm text-gray-300 leading-6">
-              {post.text}
-            </p>
-          </div>
-
-          {post.image && (
-            <img
-              src={post.image}
-              alt=""
-              className="w-28 h-24 rounded-lg object-cover"
-            />
-          )}
-        </div>
-
-        {/* Footer */}
-        <div className="flex items-center gap-5 mt-4 text-sm">
-          <button className="flex items-center gap-1 text-purple-400 hover:text-purple-300">
-            <Share2 className="w-4 h-4" />
-            Share
-          </button>
-
-          <button className="flex items-center gap-1 text-yellow-400 hover:text-yellow-300">
-            <PartyPopper className="w-4 h-4" />
-            Celebrate
-          </button>
-
-          <button className="flex items-center gap-1 text-pink-400 hover:text-pink-300">
-            <Heart className="w-4 h-4" />
-            Support
-          </button>
-        </div>
-      </div>
-    ))}
-  </div>
-
-  {/* Bottom */}
-  <div className="flex justify-center mt-6">
-    <button className="flex items-center gap-2 text-[#D4AF37] hover:text-yellow-300 font-medium">
-      See more posts
-      <ArrowRight className="w-4 h-4" />
-    </button>
-  </div>
-</div>
           </div>
 
           {/* Right column */}
@@ -611,11 +436,9 @@ export default function TeacherDashboard() {
                 <h3 className="font-semibold text-[#D4AF37]">Lumi</h3>
               </div>
               <p className="text-xs text-gray-400 mb-4">Your Teaching Assistant</p>
-
               <p className="text-sm text-gray-300 mb-4 leading-relaxed">
                 Good morning! Here are a few things I can help you with today.
               </p>
-
               <div className="space-y-2">
                 {lumiSuggestions.map((s, i) => (
                   <button
@@ -627,7 +450,6 @@ export default function TeacherDashboard() {
                   </button>
                 ))}
               </div>
-
               <p className="text-xs text-gray-500 mt-4">How else can I assist you?</p>
             </div>
 
@@ -681,6 +503,110 @@ export default function TeacherDashboard() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* ================= Community Wall — now full width, below the grid ================= */}
+        <div className="bg-white/[0.03] border border-[#D4AF37]/20 rounded-xl p-5">
+          {/* Header */}
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-5">
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#D4AF37]" />
+              <h3 className="text-lg font-semibold text-[#D4AF37]">Community Wall</h3>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button className="px-4 py-1.5 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37] text-sm">
+                All Posts
+              </button>
+              <button className="px-4 py-1.5 rounded-lg border border-white/10 text-gray-300 text-sm hover:border-[#D4AF37]/30">
+                School
+              </button>
+              <button className="px-4 py-1.5 rounded-lg border border-white/10 text-gray-300 text-sm hover:border-[#D4AF37]/30">
+                Teachers
+              </button>
+
+              <div className="h-6 w-px bg-white/10" />
+
+              <button className="flex items-center gap-1 text-sm text-[#D4AF37]">
+                Sort: Recent
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Posts — now spans 4 columns on xl since the section is full width */}
+       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+  {communityPosts.map((post, i) => (
+    <div
+      key={i}
+      className="rounded-xl border border-[#D4AF37]/20 bg-[#0F0F0F] p-4 hover:border-[#D4AF37]/40 transition-all"
+    >
+      {/* Header */}
+      <div className="flex justify-between items-start">
+        <div className="flex items-center gap-3">
+          <img
+            src={post.avatar}
+            alt={post.name}
+            className="w-10 h-10 rounded-full object-cover border border-[#D4AF37]/30"
+          />
+
+          <div>
+            <h4 className="text-white text-sm font-medium">
+              {post.name}
+            </h4>
+
+            <p className="text-gray-500 text-xs">
+              {post.time}
+            </p>
+          </div>
+        </div>
+
+        <button className="text-[#D4AF37] hover:text-yellow-400">
+          <MoreVertical size={16} />
+        </button>
+      </div>
+
+      {/* Body */}
+      <div className="mt-4 flex gap-3">
+        <p className="text-gray-300 text-sm leading-6 flex-1">
+          {post.text}
+        </p>
+
+        <img
+          src={post.image}
+          alt=""
+          className="w-24 h-20 rounded-lg object-cover border border-[#D4AF37]/20"
+        />
+      </div>
+
+      {/* Footer */}
+      <div className="flex items-center gap-5 mt-4 text-xs">
+        <button className="flex items-center gap-1 text-purple-400 hover:text-purple-300">
+          <Share2 size={14} />
+          Share
+        </button>
+
+        <button className="flex items-center gap-1 text-yellow-400 hover:text-yellow-300">
+          <PartyPopper size={14} />
+          Celebrate
+        </button>
+
+        <button className="flex items-center gap-1 text-pink-400 hover:text-pink-300">
+          <Heart size={14} />
+          Support
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
+
+          {/* Bottom */}
+          <div className="flex justify-center mt-6">
+            <button className="flex items-center gap-2 text-[#D4AF37] hover:text-yellow-300 font-medium">
+              See more posts
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </main>

@@ -10,6 +10,8 @@ import {
   Settings,
   ChevronDown,
   Bell,
+   Calendar,
+  Globe,
   Star,
   Flame,
   Target,
@@ -29,6 +31,7 @@ const navItems = [
   { label: "Achievements", icon: Award },
   { label: "Manners in the Monarch", icon: Crown },
   { label: "Passport Pals", icon: Globe2 },
+  {label: "Settings", icon: Settings },
 ];
 
 const stats = [
@@ -179,10 +182,7 @@ export default function StudentDashboard() {
         </div>
 
         <div className="space-y-3">
-          <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-white/5 transition">
-            <Settings className="w-4 h-4" />
-            Settings
-          </button>
+
           <div
             className="w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg border text-sm"
             style={{ borderColor: `${GOLD}33`, color: GOLD }}
@@ -257,20 +257,41 @@ export default function StudentDashboard() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {stats.map((s) => (
-                <div key={s.label} className="bg-white/[0.03] border rounded-xl p-4" style={{ borderColor: `${GOLD}1A` }}>
-                  <div
-                    className="w-9 h-9 rounded-lg flex items-center justify-center mb-3"
-                    style={{ backgroundColor: `${GOLD}1A` }}
-                  >
-                    <s.icon className="w-4 h-4" style={{ color: GOLD }} />
-                  </div>
-                  <p className="text-2xl font-bold">{s.value}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{s.label}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  {stats.map((s) => (
+    <div
+      key={s.label}
+      className="flex items-center gap-3 bg-white/[0.03] border rounded-xl px-4 py-3"
+      style={{
+        borderColor: `${GOLD}1A`,
+      }}
+    >
+      {/* Icon */}
+      <div
+        className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+         style={{
+        backgroundColor: `${GOLD}1A`,
+      }}
+      >
+        <s.icon
+          className="w-8 h-8"
+          style={{ color: GOLD }}
+        />
+      </div>
+
+      {/* Text */}
+      <div>
+        <h3 className="text-2xl mt-3 font-bold leading-none">
+          {s.value}
+        </h3>
+
+        <p className="text-xs text-gray-400 mt-1 leading-tight">
+          {s.label}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
 
             {/* Feature cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-stretch">
@@ -350,25 +371,97 @@ export default function StudentDashboard() {
               </div>
             </div>
 
-            {/* Latest achievement */}
-            <div className="bg-white/[0.03] border rounded-xl p-5" style={{ borderColor: `${GOLD}1A` }}>
-              <h3 className="font-semibold mb-4" style={{ color: GOLD }}>
-                Latest Achievement
-              </h3>
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-[#ddba3d] flex items-center justify-center shrink-0">
-                  <Shield className="w-7 h-7 text-black" />
-                </div>
-                <div>
-                  <p className="font-semibold text-sm">Quick Learner</p>
-                  <p className="text-xs text-gray-400 mt-0.5">Completed 5 activities</p>
-                  <p className="text-xs text-gray-400">Keep going!</p>
-                </div>
-              </div>
-            </div>
+         
+            
 
+            <div
+  className="bg-white/[0.03] border rounded-xl p-5"
+  style={{ borderColor: `${GOLD}33` }}
+>
+  {/* Header */}
+  <div className="flex items-center gap-2 mb-4">
+    <Calendar className="w-5 h-5" style={{ color: GOLD }} />
+    <h3 className="font-semibold" style={{ color: GOLD }}>
+      Upcoming
+    </h3>
+  </div>
+
+  {/* Item 1 */}
+  <div className="flex items-start gap-3 mb-4">
+    <BookOpen className="w-5 h-5 text-gray-300 mt-0.5" />
+    <div>
+      <p className="text-sm font-medium text-white">
+        History Quiz
+      </p>
+      <p className="text-xs text-gray-400">
+        Tomorrow • 10:00 AM
+      </p>
+    </div>
+  </div>
+
+  {/* Item 2 */}
+  <div className="flex items-start gap-3 mb-4">
+    <Globe className="w-5 h-5 text-gray-300 mt-0.5" />
+    <div>
+      <p className="text-sm font-medium text-white">
+        Passport Pals Challenge
+      </p>
+      <p className="text-xs text-gray-400">
+        Due Friday
+      </p>
+    </div>
+  </div>
+
+  {/* Item 3 */}
+  <div className="flex items-start gap-3">
+    <Crown className="w-5 h-5 text-gray-300 mt-0.5" />
+    <div>
+      <p className="text-sm font-medium text-white">
+        Manners in the Monarch
+      </p>
+      <p className="text-xs text-gray-400">
+        New activity available!
+      </p>
+    </div>
+  </div>
+</div>
+<div
+  className="bg-[#111111] border border-[#D4AF37]/20 rounded-2xl p-6"
+>
+  {/* Heading */}
+  <h3 className="text-[#D4AF37] font-semibold text-xl mb-6">
+    Latest Achievement
+  </h3>
+
+  {/* Content */}
+  <div className="flex items-center gap-5">
+    {/* Badge */}
+    <div className="flex-shrink-0">
+      <img
+        src="/star.png"
+        alt="Achievement Badge"
+        className="w-16 h-16 object-contain"
+      />
+    </div>
+
+    {/* Text */}
+    <div className="flex flex-col">
+      <h4 className="text-white text-lg font-semibold leading-none">
+        Quick Learner
+      </h4>
+
+      <p className="text-gray-400 text-md mt-2">
+        Completed 5 activities
+      </p>
+
+      <p className="text-gray-400 text-md">
+        Keep going!
+      </p>
+    </div>
+  </div>
+</div>
             {/* Learning streak */}
-            <div className="bg-white/[0.03] border rounded-xl p-5" style={{ borderColor: `${GOLD}1A` }}>
+            {/* <div className="bg-white/[0.03] border rounded-xl p-5" style={{ borderColor: `${GOLD}1A` }}>
               <h3 className="font-semibold mb-3" style={{ color: GOLD }}>
                 Learning Streak
               </h3>
@@ -441,7 +534,7 @@ export default function StudentDashboard() {
       </div>
     </div>
   </div>
-</div>
+</div> */}
           </div>
         </div>
       </main>
