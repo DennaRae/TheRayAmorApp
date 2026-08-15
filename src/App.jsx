@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./components/Login";
 import Teacher from "./components/TeacherDashboard";
-import Student from "./components/StudentDashboard";
+import Student from "./components/Studentdashboard";
 import Dashboard from "./components/Rayamordashboard";
 import  OnboardingFlow from "./components/Onboardingflow";
 import TermsAndConditions from "./components/Termsandconditions";
