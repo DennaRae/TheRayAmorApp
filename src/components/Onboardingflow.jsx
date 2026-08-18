@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import StepIndicator from "./StepIndicator";
-import AccountTypeStep from "./steps/AccountTypeStep";
-import AvatarStep from "./steps/AvatarStep";
-import CompleteStep from "./steps/CompleteStep";
+import StepIndicator from "./Stepindicator";
+import AccountTypeStep from "./steps/Accounttypestep";
+import AvatarStep from "./steps/Avatarstep";
+import CompleteStep from "./steps/Completestep";
 
 // Swap this for your actual mansion/portrait background image.
 const BG_IMAGE_URL = "/assets/backgroundimage.png";
@@ -81,9 +81,9 @@ export default function OnboardingFlow() {
           <StepIndicator currentStep={step} />
 
           <div className="mt-6 min-h-[260px]">
-            {step === 1 && (
+            {/* {step === 1 && (
               <AccountTypeStep selected={accountType} onSelect={setAccountType} />
-            )}
+            )} */}
 
             {step === 2 && <AvatarStep avatar={avatar} onChange={setAvatar} />}
 
