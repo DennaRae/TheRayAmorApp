@@ -84,7 +84,7 @@ const slides = [
 // ---- Sidebar nav (image 1 structure) ----
 const navItems = [
   { label: "Home", icon: Home, active: true },
-  { label: "Education Hub", icon: GraduationCap },
+  { label: "Education Center", icon: GraduationCap },
   { label: "Black Map", icon: MapPin },
   { label: "Travel", icon: Plane },
   { label: "Finance", icon: Landmark },
@@ -103,7 +103,7 @@ const navItemsSecondary = [
 const sections = [
   {
     key: "education",
-    title: "Education Hub",
+    title: "Education Center",
     subtitle: "Empowering educators and students for a better tomorrow.",
     accent: "text-amber-400",
     accentBg: "bg-amber-400/10",

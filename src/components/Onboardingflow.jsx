@@ -28,7 +28,7 @@ export default function OnboardingFlow() {
   const goBack = () => setStep((s) => Math.max(1, s - 1));
 
   const goNext = () => {
-    if (step < 3) {
+    if (step < 2) {
       setStep((s) => s + 1);
       return;
     }
@@ -36,9 +36,9 @@ export default function OnboardingFlow() {
     navigate("/dashboard");
   };
 
-  const skipAvatar = () => setStep(3);
+  const skipAvatar = () => setStep(2);
 
-  const isNextDisabled = step === 3 && !agreedToTerms;
+  const isNextDisabled = step === 2 && !agreedToTerms;
 
   return (
     <div className="relative min-h-screen w-full bg-black overflow-hidden">
@@ -85,9 +85,9 @@ export default function OnboardingFlow() {
               <AccountTypeStep selected={accountType} onSelect={setAccountType} />
             )} */}
 
-            {step === 2 && <AvatarStep avatar={avatar} onChange={setAvatar} />}
+            {step === 1 && <AvatarStep avatar={avatar} onChange={setAvatar} />}
 
-            {step === 3 && (
+            {step === 2 && (
               <CompleteStep
                 agreedToTerms={agreedToTerms}
                 onToggleTerms={setAgreedToTerms}
@@ -107,7 +107,7 @@ export default function OnboardingFlow() {
                   Back
                 </button>
               )}
-              {step === 2 && (
+              {step == 1 && (
                 <button
                   type="button"
                   onClick={skipAvatar}
@@ -128,7 +128,7 @@ export default function OnboardingFlow() {
                 isNextDisabled ? "opacity-40 cursor-not-allowed" : "hover:opacity-90",
               ].join(" ")}
             >
-              {step === 3 ? "Go to Dashboard" : "Continue"}
+              {step === 2 ? "Go to Dashboard" : "Continue"}
               <ArrowRight size={18} />
             </button>
           </div>

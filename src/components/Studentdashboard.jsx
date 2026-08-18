@@ -318,7 +318,7 @@ export default function StudentDashboard() {
 
           <div className="flex items-center gap-2 px-3 py-2 mb-4 text-sm font-medium" style={{ color: GOLD }}>
             <GraduationCap className="w-4 h-4" />
-            EDUCATION HUB
+            EDUCATION CENTER
           </div>
 
           <nav className="space-y-1">

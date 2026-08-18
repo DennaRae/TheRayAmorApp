@@ -6,9 +6,9 @@ import { Check } from "lucide-react";
  * currentStep: 1 | 2 | 3
  */
 const STEPS = [
-  { id: 1, title: "Account Type", subtitle: "Choose your role" },
-  { id: 2, title: "Avatar (Optional)", subtitle: "Create your avatar" },
-  { id: 3, title: "Complete", subtitle: "You're all set!" },
+  // { id: 1, title: "Account Type", subtitle: "Choose your role" },
+  { id: 1, title: "Avatar (Optional)", subtitle: "Create your avatar" },
+  { id: 2, title: "Complete", subtitle: "You're all set!" },
 ];
 
 export default function StepIndicator({ currentStep }) {

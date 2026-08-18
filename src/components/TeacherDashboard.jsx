@@ -237,7 +237,7 @@ export default function TeacherDashboard() {
         <div>
           <div className="flex items-center gap-2 px-3 py-2 mb-4 text-[#D4AF37] text-sm font-medium">
             <GraduationCap className="w-4 h-4" />
-            EDUCATION HUB
+            EDUCATION CENTER
           </div>
 
           <nav className="space-y-1">
