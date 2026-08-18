@@ -18,6 +18,11 @@ import {
   ArrowRight,
   Shield,
   Check,
+  Users,
+  Share2,
+  Heart,
+  MoreVertical,
+  PartyPopper,
 } from "lucide-react";
 
 const GOLD = "#D4AF37";
@@ -63,6 +68,34 @@ const featureCards = [
     desc: "Earn badges and celebrate your progress.",
     cta: "View Achievements",
     enabled: true,
+  },
+];
+
+// ---------- Community Wall data ----------
+
+const communityFilters = ["All", "School", "Friends"];
+
+const communityPosts = [
+  {
+    name: "Jayden M.",
+    time: "2h ago",
+   avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300&h=200&fit=crop",
+    text: "Just completed Manners in the Monarch: Royal Respect! It was amazing! 🎉",
+  },
+  {
+    name: "Aaliyah R.",
+    time: "4h ago",
+     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=300&h=200&fit=crop",
+    text: "Check out my Passport Pals project on Japan! What country are YOU exploring? 🌏",
+  },
+  {
+    name: "Marcus T.",
+    time: "6h ago",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=300&h=200&fit=crop",
+    text: "New badge unlocked! On to the next one!  ⭐",
   },
 ];
 
@@ -140,6 +173,129 @@ function ImageFrame({ src, alt, size = "md" }) {
         alt={alt}
         className="w-full h-full cursor-pointer object-cover transition-transform duration-300 group-hover/frame:scale-105"
       />
+    </div>
+  );
+}
+
+// ---------- Community Wall ----------
+
+function CommunityWall() {
+  const [activeFilter, setActiveFilter] = React.useState("All");
+
+  return (
+    <div
+      className="bg-white/[0.03] border rounded-xl p-6"
+      style={{ borderColor: `${GOLD}1A` }}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
+        <div className="flex items-center gap-2">
+          <Users className="w-5 h-5" style={{ color: GOLD }} />
+          <h3 className="font-semibold text-lg" style={{ color: GOLD }}>
+            Community Wall
+          </h3>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1">
+            {communityFilters.map((f) => (
+              <button
+                key={f}
+                onClick={() => setActiveFilter(f)}
+                className="px-3 py-1 rounded-md text-xs font-medium transition"
+                style={
+                  activeFilter === f
+                    ? { backgroundColor: `${GOLD}1A`, color: GOLD, border: `1px solid ${GOLD}66` }
+                    : { color: "#9ca3af" }
+                }
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+
+          <button className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-200 transition">
+            Sort: Recent <ChevronDown className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Posts */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {communityPosts.map((post) => (
+          <div
+            key={post.name}
+            className="bg-white/[0.03] border rounded-xl p-4 flex flex-col"
+            style={{ borderColor: `${GOLD}1A` }}
+          >
+            {/* Post header */}
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full overflow-hidden bg-white/10 flex items-center justify-center text-xs font-semibold">
+                  <img
+                    src={post.avatar}
+                    alt={post.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="leading-tight">
+                  <p className="text-sm font-medium text-white">{post.name}</p>
+                  <p className="text-xs text-gray-500">{post.time}</p>
+                </div>
+              </div>
+              <MoreVertical className="w-4 h-4 text-gray-500" />
+            </div>
+
+            {/* Post image */}
+            <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-3 bg-black/40">
+              <img
+                src={post.image}
+                alt={post.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Post text */}
+            <p className="text-sm text-gray-300 leading-relaxed flex-1">{post.text}</p>
+
+            {/* Actions */}
+               <div className="flex items-center gap-5 mt-4 text-xs">
+        <button className="flex items-center gap-1 text-purple-400 hover:text-purple-300">
+          <Share2 size={14} />
+          Share
+        </button>
+
+        <button className="flex items-center gap-1 text-yellow-400 hover:text-yellow-300">
+          <PartyPopper size={14} />
+          Celebrate
+        </button>
+
+        <button className="flex items-center gap-1 text-pink-400 hover:text-pink-300">
+          <Heart size={14} />
+          Support
+        </button>
+      </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer */}
+      <div className="flex items-center justify-center gap-1.5 mt-5">
+        {[0, 1, 2].map((i) => (
+          <span
+            key={i}
+            className="w-1.5 h-1.5 rounded-full"
+            style={{ backgroundColor: i === 0 ? GOLD : "#3a3a3a" }}
+          />
+        ))}
+      </div>
+
+      <button
+        className="w-full text-center text-sm font-medium mt-4 flex items-center justify-center gap-1.5 hover:opacity-80 transition"
+        style={{ color: GOLD }}
+      >
+        See more posts <ArrowRight className="w-3.5 h-3.5" />
+      </button>
     </div>
   );
 }
@@ -293,32 +449,8 @@ export default function StudentDashboard() {
   ))}
 </div>
 
-            {/* Feature cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-stretch">
-              {featureCards.map((card) => (
-                <div
-                  key={card.title}
-                  className="bg-white/[0.03] border rounded-xl p-6 flex flex-col
-                  items-center text-center transition hover:bg-white/[0.05] h-full"
-                  style={{ borderColor: `${GOLD}1A` }}
-                >
-                  <ImageFrame
-                    src={card.image}
-                    alt={card.title}
-                    size="lg"
-                  />
-
-                  <h3 className="font-semibold text-lg mt-5">{card.title}</h3>
-                  <p className="text-sm text-gray-400 mt-2 leading-relaxed flex-1">{card.desc}</p>
-                  <button
-                    className="mt-5 flex cursor-pointer items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-black transition hover:opacity-90"
-                    style={{ backgroundColor: GOLD }}
-                  >
-                    {card.cta} <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              ))}
-            </div>
+            {/* Community Wall (replaces the three feature cards) */}
+            <CommunityWall />
 
             {/* Coming soon cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -460,81 +592,6 @@ export default function StudentDashboard() {
     </div>
   </div>
 </div>
-            {/* Learning streak */}
-            {/* <div className="bg-white/[0.03] border rounded-xl p-5" style={{ borderColor: `${GOLD}1A` }}>
-              <h3 className="font-semibold mb-3" style={{ color: GOLD }}>
-                Learning Streak
-              </h3>
-              <p className="text-2xl font-bold flex items-center gap-2 mb-4">
-                <Flame className="w-6 h-6" style={{ color: GOLD }} />
-                7 Days
-              </p>
-              <div className="grid grid-cols-7 gap-2">
-                {weekDays.map((d, i) => (
-                  <div key={i} className="flex flex-col items-center gap-1.5">
-                    <span className="text-xs text-gray-400">{d.day}</span>
-                    <div
-                      className="w-7 h-7 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: d.done ? GOLD : "#2a2a2a" }}
-                    >
-                      {d.done && <Check className="w-3.5 h-3.5 text-black" />}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          <div
-  className="bg-white/[0.03] border rounded-xl p-7"
-  style={{ borderColor: `${GOLD}1A` }}
->
-  <h3 className="font-semibold mb-5" style={{ color: GOLD }}>
-    Today's Progress
-  </h3>
-
-  <div className="space-y-4">
-    <div>
-      <div className="flex justify-between text-sm mb-2">
-        <span className="text-gray-300">Lessons</span>
-        <span className="text-white font-medium">3 / 5</span>
-      </div>
-
-      <div className="h-2 bg-[#2a2a2a] rounded-full overflow-hidden">
-        <div
-          className="h-full rounded-full"
-          style={{ width: "60%", backgroundColor: GOLD }}
-        />
-      </div>
-    </div>
-
-    <div>
-      <div className="flex justify-between text-sm mb-2">
-        <span className="text-gray-300">Quizzes</span>
-        <span className="text-white font-medium">2 / 3</span>
-      </div>
-
-      <div className="h-2 bg-[#2a2a2a] rounded-full overflow-hidden">
-        <div
-          className="h-full rounded-full"
-          style={{ width: "67%", backgroundColor: GOLD }}
-        />
-      </div>
-    </div>
-
-    <div>
-      <div className="flex justify-between text-sm mb-2">
-        <span className="text-gray-300">Activities</span>
-        <span className="text-white font-medium">4 / 6</span>
-      </div>
-
-      <div className="h-2 bg-[#2a2a2a] rounded-full overflow-hidden">
-        <div
-          className="h-full rounded-full"
-          style={{ width: "70%", backgroundColor: GOLD }}
-        />
-      </div>
-    </div>
-  </div>
-</div> */}
           </div>
         </div>
       </main>

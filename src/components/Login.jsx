@@ -230,25 +230,7 @@ className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 px-4 
             <span className="text-xs text-gray-400">or continue with</span>
             <div className="flex-1 h-px bg-gray-600/50" />
           </div>
-{!isSignup && (
-<>
-          {/* Social buttons */}
-          <button
-            type="button"
-            className="w-full flex items-center justify-center gap-3 py-2.5 rounded-lg border border-gray-600/50 bg-black/40 text-gray-100 text-sm hover:bg-black/60 transition"
-          >
-            <GoogleIcon />
-            Continue with Google
-          </button>
-          <button
-            type="button"
-            className="w-full flex items-center justify-center gap-3 py-2.5 rounded-lg border border-gray-600/50 bg-black/40 text-gray-100 text-sm hover:bg-black/60 transition"
-          >
-            <AppleIcon />
-            Continue with Apple
-          </button>
-          </>
-)}
+
 
 <p className="text-center text-sm text-gray-400 pt-2">
 
