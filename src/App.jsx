@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./components/Login";
+import AccountTypeStep from "./components/steps/Accounttypestep";
 import Teacher from "./components/TeacherDashboard";
 import Student from "./components/Studentdashboard";
 import Dashboard from "./components/Rayamordashboard";
@@ -11,7 +12,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+      <Route path="/" element={<AccountTypeStep />} />
+      <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
           <Route path="/onboarding" element={<OnboardingFlow />} />
   <Route path="/terms" element={<TermsAndConditions />} />
 
