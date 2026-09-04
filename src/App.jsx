@@ -6,13 +6,17 @@ import AccountTypeStep from "./components/steps/Accounttypestep";
 import Teacher from "./components/TeacherDashboard";
 import Student from "./components/Studentdashboard";
 import Dashboard from "./components/Rayamordashboard";
+import Welcome from "./components/Welcome";
 import  OnboardingFlow from "./components/Onboardingflow";
 import TermsAndConditions from "./components/Termsandconditions";
+import LuxuryHeroIntro from "./components/LuxuryHeroIntro";
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<AccountTypeStep />} />
+      <Route path="/" element={<Welcome />} />
+      <Route path="/luxury" element={<LuxuryHeroIntro />} />
+      <Route path="/account" element={<AccountTypeStep />} />
       <Route path="/login" element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
           <Route path="/onboarding" element={<OnboardingFlow />} />

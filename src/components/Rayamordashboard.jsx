@@ -389,7 +389,7 @@ export default function RayAmorDashboard() {
         {/* Welcome line (image 1 style) */}
         <div>
           <p className="text-sm text-gray-500 mt-1">
-            Explore your dashboard and continue your journey.
+            let’s make today magical 
           </p>
         </div>
 

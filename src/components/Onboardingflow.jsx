@@ -6,9 +6,6 @@ import AccountTypeStep from "./steps/Accounttypestep";
 import AvatarStep from "./steps/Avatarstep";
 import CompleteStep from "./steps/Completestep";
 
-// Swap this for your actual mansion/portrait background image.
-const BG_IMAGE_URL = "/assets/backgroundimage.png";
-
 const DEFAULT_AVATAR = {
   gender: "female",
   face: "face-1",
@@ -33,7 +30,7 @@ export default function OnboardingFlow() {
       return;
     }
     // Final step -> send them to the dashboard.
-    navigate("/dashboard");
+    navigate("/luxury");
   };
 
   const skipAvatar = () => setStep(2);
@@ -41,52 +38,26 @@ export default function OnboardingFlow() {
   const isNextDisabled = step === 2 && !agreedToTerms;
 
   return (
-    <div className="relative min-h-screen w-full bg-black overflow-hidden">
-      {/* Background image — fixed, full-screen, sits behind everything (z-0) */}
+    <div className="relative min-h-screen w-full overflow-hidden flex items-center
+     justify-center p-4 sm:p-8 lg:p-12 text-white"
+    style={{
+      background:
+        "linear-gradient(160deg, #33291a 0%, #1c160d 45%, #0a0806 100%)",
+    }}>
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${BG_IMAGE_URL})` }}
       />
-      {/* Dark overlay so text/cards stay readable over the image */}
       <div className="absolute inset-0 z-10 bg-black/30" />
-
-      {/* Branding — floats above the background */}
-      <div className="absolute inset-0 z-20 p-10 pointer-events-none">
-        <h1 className="text-2xl mt-5 ml-105 font-serif tracking-[0.2em] text-[#D4AF37] mt-1">
-          RAY AMOR
-        </h1>
-        <p className="text-xs  ml-95 tracking-[0.3em] text-neutral-300 mt-1">
-          AI MIND ORGANIZING ROUTINE
-        </p>
-         <div className="mt-90 ml-110 mb-4 ml-10 bg-black/60 border border-amber-500/40 rounded-2xl p-6 w-60 backdrop-blur-sm">
-          <p className="text-amber-300 text-lg font-medium">
-            Hi, I&apos;m Lumi <span className="align-middle">✨</span>
-          </p>
-          <p className="text-amber-400 text-sm font-semibold mt-1">
-            Your AI Concierge
-          </p>
-          <p className="text-gray-200 text-sm mt-2 leading-relaxed">
-            Welcome to Ray Amor.
-            <br />
-            Let&apos;s make today legendary.
-          </p>
-        </div> 
-      </div>
-
-      {/* Step process card — highest z-index, floats above the background image */}
-      <div className="relative z-30 min-h-screen flex items-center justify-center
+ <div className="relative z-30 min-h-screen flex items-center justify-center
        lg:justify-end p-6 lg:pr-2">
         <div className="w-full max-w-3xl bg-neutral-950/95 backdrop-blur-sm border border-neutral-800
          rounded-2xl p-6 md:p-8">
           <StepIndicator currentStep={step} />
 
           <div className="mt-6 min-h-[260px]">
-            {/* {step === 1 && (
-              <AccountTypeStep selected={accountType} onSelect={setAccountType} />
-            )} */}
-
-            {step === 1 && <AvatarStep avatar={avatar} onChange={setAvatar} />}
-
+            {step === 1 && 
+            <AvatarStep avatar={avatar}
+             onChange={setAvatar} />}
             {step === 2 && (
               <CompleteStep
                 agreedToTerms={agreedToTerms}
@@ -102,7 +73,7 @@ export default function OnboardingFlow() {
                 <button
                   type="button"
                   onClick={goBack}
-                  className="px-5 py-2 text-sm text-neutral-300 hover:text-white"
+                  className="px-5 py-2 text-sm text-neutral-300 border border-neutral-700 rounded-lg  hover:text-white"
                 >
                   Back
                 </button>
@@ -111,7 +82,7 @@ export default function OnboardingFlow() {
                 <button
                   type="button"
                   onClick={skipAvatar}
-                  className="ml-2 px-5 py-2 text-sm text-neutral-300 border border-neutral-700 rounded-lg hover:border-[#D4AF37] hover:text-[#D4AF37]"
+                  className=" px-5 py-2 text-sm text-neutral-300 border border-neutral-700 rounded-lg hover:border-[#D4AF37] hover:text-[#D4AF37]"
                 >
                   Skip for now
                 </button>
@@ -128,7 +99,7 @@ export default function OnboardingFlow() {
                 isNextDisabled ? "opacity-40 cursor-not-allowed" : "hover:opacity-90",
               ].join(" ")}
             >
-              {step === 2 ? "Go to Dashboard" : "Continue"}
+              {step === 2 ? "Enter the Room ✦" : "Continue"}
               <ArrowRight size={18} />
             </button>
           </div>

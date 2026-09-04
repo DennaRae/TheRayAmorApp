@@ -68,136 +68,115 @@ const handleSubmit = (e) => {
   setConfirmPassword("");
 };
 
-  return (
-   <div
-  className=" w-full flex items-center justify-end bg-cover bg-center relative px-6 md:px-16 py-12 min-h-screen"
-  style={{ backgroundImage: "url('/background.png')" }}
->
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/40" />
+return (
+  <div
+    className="relative min-h-screen w-full overflow-hidden flex items-center justify-center p-4 sm:p-8 lg:p-12 text-white"
+  style={{
+    background: "linear-gradient(160deg, #33291a 0%, #1c160d 45%, #0a0806 100%)",
+  }}
+  >
+    {/* Login / Signup Card */}
+    <div className="relative z-10 w-full max-w-md bg-[#1D1C1A] border border-amber-500/30 rounded-2xl p-8 md:p-10 backdrop-blur-md shadow-2xl">
+      <h2 className="text-3xl font-serif text-amber-400 text-center">
+        {isSignup ? "Create Account" : "Welcome Back"}
+      </h2>
 
-      {/* Brand + Lumi intro (left side) */}
-      <div className="relative z-10 hidden lg:flex flex-col justify-between h-full flex-1 max-w-lg self-start pt-4">
+      <p className="text-gray-300 text-sm text-center mt-2">
+        Sign in to continue your journey with Ray Amor.
+      </p>
+
+      <form
+        onSubmit={isSignup ? handleSignup : handleSubmit}
+        className="mt-8 space-y-5"
+      >
+        {isSignup && (
+          <div>
+            <label className="block text-sm text-gray-200 mb-1.5">
+              Full Name
+            </label>
+
+            <div className="relative">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your full name"
+                className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 px-4 text-sm text-gray-100"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Email */}
         <div>
-         
-          <h2 className="text-2xl font-serif tracking-[0.3em] text-amber-300 mt-1">
-            RAY AMOR
-          </h2>
-          <p className="text-xs tracking-[0.1em] text-amber-100/80 mt-2">
-            AI MIND ORGANIZING ROUTINE
-          </p>
+          <label className="block text-sm text-gray-200 mb-1.5">
+            Email Address
+          </label>
+
+          <div className="relative">
+            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 pl-10 pr-4 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 focus:border-amber-500/60 transition"
+            />
+          </div>
         </div>
 
-        <div className="mt-90 mb-4 ml-10 bg-black/60 border border-amber-500/40 rounded-2xl p-6 w-60 backdrop-blur-sm">
-          <p className="text-amber-300 text-lg font-medium">
-            Hi, I&apos;m Lumi <span className="align-middle">✨</span>
-          </p>
-          <p className="text-amber-400 text-sm font-semibold mt-1">
-            Your AI Concierge
-          </p>
-          <p className="text-gray-200 text-sm mt-2 leading-relaxed">
-            Welcome to Ray Amor.
-            <br />
-            Let&apos;s make today legendary.
-          </p>
-        </div> 
-      </div>
+        {/* Password */}
+        <div>
+          <label className="block text-sm text-gray-200 mb-1.5">
+            Password
+          </label>
 
-      {/* Login card (right side) */}
-      <div className="relative z-10 w-full max-w-md bg-black/70 border border-amber-500/30 rounded-2xl p-8 md:p-10 backdrop-blur-md shadow-2xl">
-       <h2 className="text-3xl font-serif text-amber-400 text-center">
-{isSignup ? "Create Account" : "Welcome Back"}
-</h2>
-        <p className="text-gray-300 text-sm text-center mt-2">
-          Sign in to continue your journey with Ray Amor.
-        </p>
+          <div className="relative">
+            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
 
-       <form onSubmit={isSignup ? handleSignup : handleSubmit} className="mt-8 space-y-5">
-       {isSignup && (
-<div>
-<label className="block text-sm text-gray-200 mb-1.5">
-Full Name
-</label>
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 pl-10 pr-10 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 focus:border-amber-500/60 transition"
+            />
 
-<div className="relative">
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-amber-400 transition"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? (
+                <EyeOff className="w-4 h-4" />
+              ) : (
+                <Eye className="w-4 h-4" />
+              )}
+            </button>
+          </div>
+        </div>
 
-<input
-type="text"
-value={name}
-onChange={(e)=>setName(e.target.value)}
-placeholder="Enter your full name"
-className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 px-4 text-sm text-gray-100"
-/>
-
-</div>
-</div>
-)}
-          {/* Email */}
+        {/* Confirm Password */}
+        {isSignup && (
           <div>
             <label className="block text-sm text-gray-200 mb-1.5">
-              Email Address
+              Confirm Password
             </label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 pl-10 pr-4 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 focus:border-amber-500/60 transition"
-              />
-            </div>
+
+            <input
+              type={showPassword ? "text" : "password"}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm Password"
+              className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 px-4 text-sm text-gray-100"
+            />
           </div>
+        )}
 
-          {/* Password */}
-          <div>
-            <label className="block text-sm text-gray-200 mb-1.5">
-              Password
-            </label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 pl-10 pr-10 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 focus:border-amber-500/60 transition"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-amber-400 transition"
-                aria-label={showPassword ? "Hide password" : "Show password"}
-              >
-                {showPassword ? (
-                  <EyeOff className="w-4 h-4" />
-                ) : (
-                  <Eye className="w-4 h-4" />
-                )}
-              </button>
-            </div>
-          </div>
-{isSignup && (
-
-<div>
-
-<label className="block text-sm text-gray-200 mb-1.5">
-Confirm Password
-
-</label>
-
-<input
-type={showPassword ? "text" : "password"}
-value={confirmPassword}
-onChange={(e)=>setConfirmPassword(e.target.value)}
-placeholder="Confirm Password"
-className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 px-4 text-sm text-gray-100"
-/>
-
-</div>
-
-)}
-          {/* Remember me / Forgot password */}
+        {/* Remember me / Forgot password */}
+        {!isSignup && (
           <div className="flex items-center justify-between text-sm">
             <label className="flex items-center gap-2 text-gray-300 cursor-pointer select-none">
               <input
@@ -208,6 +187,7 @@ className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 px-4 
               />
               Remember me
             </label>
+
             <a
               href="#"
               className="text-amber-400 hover:text-amber-300 transition"
@@ -215,58 +195,57 @@ className="w-full bg-black/50 border border-amber-500/30 rounded-lg py-2.5 px-4 
               Forgot Password?
             </a>
           </div>
+        )}
 
-          {/* Sign in button */}
-          <button
-            type="submit"
-            className="w-full py-3 rounded-lg font-semibold text-black bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 transition shadow-lg shadow-amber-500/20"
-          >
-       {isSignup ? "Create Account" : "Sign In"}
-          </button>
+        {/* Submit */}
+        <button
+          type="submit"
+          className="w-full py-3 rounded-lg font-semibold text-black bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 transition shadow-lg shadow-amber-500/20"
+        >
+          {isSignup ? "Create Account" : "Sign In"}
+        </button>
 
-          {/* Divider */}
-          <div className="flex items-center gap-3 pt-2">
-            <div className="flex-1 h-px bg-gray-600/50" />
-            <span className="text-xs text-gray-400">or continue with</span>
-            <div className="flex-1 h-px bg-gray-600/50" />
-          </div>
+        {/* Divider */}
+        <div className="flex items-center gap-3 pt-2">
+          <div className="flex-1 h-px bg-gray-600/50" />
 
+          <span className="text-xs text-gray-400">
+            or continue with
+          </span>
 
-<p className="text-center text-sm text-gray-400 pt-2">
+          <div className="flex-1 h-px bg-gray-600/50" />
+        </div>
 
-{isSignup ? (
-<>
-Already have an account?{" "}
-
-<button
-type="button"
-onClick={()=>setIsSignup(false)}
-className="text-amber-400 font-medium"
->
-Sign In
-</button>
-
-</>
-) : (
-<>
-Don't have an account?{" "}
-
-<button
-type="button"
-onClick={()=>setIsSignup(true)}
-className="text-amber-400 font-medium"
->
-Create Account
-</button>
-
-</>
-)}
-
-</p>
-        </form>
-      </div>
+        {/* Account switch */}
+        <p className="text-center text-sm text-gray-400 pt-2">
+          {isSignup ? (
+            <>
+              Already have an account?{" "}
+              <button
+                type="button"
+                onClick={() => setIsSignup(false)}
+                className="text-amber-400 font-medium"
+              >
+                Sign In
+              </button>
+            </>
+          ) : (
+            <>
+              Don't have an account?{" "}
+              <button
+                type="button"
+                onClick={() => setIsSignup(true)}
+                className="text-amber-400 font-medium"
+              >
+                Create Account
+              </button>
+            </>
+          )}
+        </p>
+      </form>
     </div>
-  );
+  </div>
+);
 }
 
 function GoogleIcon() {
