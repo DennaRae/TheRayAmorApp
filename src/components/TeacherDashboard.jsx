@@ -437,7 +437,7 @@ export default function TeacherDashboard() {
               </div>
               <p className="text-xs text-gray-400 mb-4">Your Teaching Assistant</p>
               <p className="text-sm text-gray-300 mb-4 leading-relaxed">
-                Good morning! Here are a few things I can help you with today.
+                Good morning! let me know how I can help ?
               </p>
               <div className="space-y-2">
                 {lumiSuggestions.map((s, i) => (

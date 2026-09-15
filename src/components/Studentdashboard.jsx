@@ -162,6 +162,8 @@ function ImageFrame({ src, alt, size = "md" }) {
   const dims =
     size === "lg"
       ? "w-40 h-40 sm:w-48 sm:h-48"
+      : size === "sm"
+      ? "w-16 h-16"
       : "w-28 h-28 sm:w-32 sm:h-32";
 
   return (
@@ -221,7 +223,7 @@ function CommunityWall() {
       </div>
 
       {/* Posts */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-rows-1 sm:grid-rows-3 gap-4">
         {communityPosts.map((post) => (
           <div
             key={post.name}
@@ -451,27 +453,6 @@ export default function StudentDashboard() {
 
             {/* Community Wall (replaces the three feature cards) */}
             <CommunityWall />
-
-            {/* Coming soon cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {comingSoonCards.map((card) => (
-                <div
-                  key={card.title}
-                  className="bg-white/[0.03] border rounded-xl p-6 flex items-center gap-5"
-                  style={{ borderColor: `${GOLD}1A` }}
-                >
-                  <ImageFrame src={card.image} alt={card.title} size="md" />
-
-                  <div>
-                    <h3 className="font-semibold">{card.title}</h3>
-                    <p className="text-sm text-gray-400 mt-1 leading-relaxed">{card.desc}</p>
-                    <button className="mt-3 px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 text-gray-300 cursor-not-allowed">
-                      Coming Soon
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right column */}
@@ -592,6 +573,28 @@ export default function StudentDashboard() {
     </div>
   </div>
 </div>
+
+            {/* Coming soon cards — moved here from the left column, stacked
+                vertically since the right rail is narrower than a 2-col grid */}
+            <div className="space-y-4">
+              {comingSoonCards.map((card) => (
+                <div
+                  key={card.title}
+                  className="bg-white/[0.03] border rounded-xl p-5 flex items-center gap-4"
+                  style={{ borderColor: `${GOLD}1A` }}
+                >
+                  <ImageFrame src={card.image} alt={card.title} size="sm" />
+
+                  <div>
+                    <h3 className="font-semibold text-sm">{card.title}</h3>
+                    <p className="text-xs text-gray-400 mt-1 leading-relaxed">{card.desc}</p>
+                    <button className="mt-2 px-3 py-1 rounded-lg text-[11px] font-medium bg-white/10 text-gray-300 cursor-not-allowed">
+                      Coming Soon
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </main>
