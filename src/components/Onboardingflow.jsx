@@ -99,8 +99,8 @@ export default function OnboardingFlow() {
                 isNextDisabled ? "opacity-40 cursor-not-allowed" : "hover:opacity-90",
               ].join(" ")}
             >
-              {step === 2 ? "Enter the Room ✦" : "Continue"}
-              <ArrowRight size={18} />
+              {step === 2 ? "Enter ✦" : "Continue"}
+              {/* <ArrowRight size={18} /> */}
             </button>
           </div>
         </div>
