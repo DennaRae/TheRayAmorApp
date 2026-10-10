@@ -485,7 +485,7 @@ export default function LuxuryHeroIntro() {
                   />
 
                   <Sparkles className="relative w-3.5 h-3.5 text-amber-300" />
-                  <span className="relative cursor-pointer">Enter the Dashboard</span>
+                  <span className="relative cursor-pointer">Welcome Home</span>
                   <motion.span
                     className="relative"
                     animate={{ x: [0, 5, 0] }}

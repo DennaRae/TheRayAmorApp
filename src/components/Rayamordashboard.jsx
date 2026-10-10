@@ -307,7 +307,7 @@ export default function RayAmorDashboard() {
             RAY AMOR
           </p>
           <p className="text-[10px] tracking-[0.15em] text-gray-500 mt-0.5">
-            AI MIND ORGANIZING ROUTINE
+            HOUSE OF RAY AMOR
           </p>
         </div>
 
