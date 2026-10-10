@@ -154,16 +154,7 @@ export default function LuxuryHeroIntro() {
           House of Ray Amor
             </motion.h1>
 
-          
-
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.55 }}
-              className="text-sm md:text-xl font-serif text-[#ebd6ad] tracking-wider uppercase"
-            >
-              Routine
-            </motion.p>
+      
           </motion.div>
         )}
       </AnimatePresence>
