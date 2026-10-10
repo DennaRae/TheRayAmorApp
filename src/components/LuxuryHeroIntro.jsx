@@ -145,25 +145,17 @@ export default function LuxuryHeroIntro() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="absolute top-6 md:top-10 inset-x-0 z-20 flex flex-col items-center text-center pointer-events-none"
           >
-            <motion.h1
-              initial={{ opacity: 0, letterSpacing: "0.35em" }}
-              animate={{ opacity: 1, letterSpacing: "0.15em" }}
-              transition={{ duration: 1.4, delay: 0.2 }}
-              className="text-2xl md:text-4xl font-serif text-[#f4d089] uppercase drop-shadow-[0_2px_12px_rgba(244,208,137,0.45)]"
-            >
-          House of 
-            </motion.h1>
+           <motion.h1
+  initial={{ opacity: 0, letterSpacing: "0.35em" }}
+  animate={{ opacity: 1, letterSpacing: "0.15em" }}
+  transition={{ duration: 1.4, delay: 0.2 }}
+  className="text-2xl md:text-4xl font-serif text-[#f4d089] uppercase drop-shadow-[0_2px_12px_rgba(244,208,137,0.45)] flex flex-col items-center leading-tight"
+>
+  <span>House</span>
+  <span>Of</span>
+  <span>Ray Amor</span>
+</motion.h1>
 
-          
-
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.55 }}
-              className="text-sm md:text-xl font-serif text-[#ebd6ad] tracking-wider uppercase"
-            >
-         Ray Amor
-            </motion.p>
           </motion.div>
         )}
       </AnimatePresence>
